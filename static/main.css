@@ -1,0 +1,121 @@
+h1 {
+    font-family: "Courier New";
+}
+
+p {
+    font-family: "Helvetica";
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    width: 30%;
+    position: fixed;
+    margin: auto;
+    vertical-align: bottom;
+ }
+
+.chat-area {
+    border: 2px #ccc solid;
+    padding: 10px;
+    position: absolute;
+    top: 20%;
+    right: 25%;
+    height: 55%;
+    width: 50%;
+    border-radius: 1%;
+}
+
+.chat-window {
+    height: 90%;
+    overflow: scroll;
+}
+
+.bot, .human {
+    border: 1px #ccc solid;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: auto;
+    position: relative;
+    clear: both;
+    overflow-wrap: break-word;
+    min-width: 2.5%;
+    max-width: 40%;
+    border-radius: 3%;
+}
+
+.bot {
+    float: left;
+    background-color: #e1e1e1;
+}
+
+.human {
+    left: 0;
+    right: 100;
+    float: right;
+    text-align: right;
+    background-color: #d3b2ff;
+}
+
+label {
+    display: table-cell;
+    clear: both;
+    font-family: "Helvetica";
+}
+
+input[type="text"] {
+  border: 1px solid #d3b2ff;
+  padding: 10px;
+  border-radius: 3px;
+  margin: 5px;
+  font-family: "Helvetica";
+}
+
+.user-entry-area {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+#userInput {
+    display: flex;
+    flex-grow: 2;
+}
+
+#textLabel {
+    display: flex;
+    width: 100%;
+}
+
+#textInput {
+    display: flex;
+    /* flex-grow: 2; */
+    width: 100%;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    background-color: #d3b2ff;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.go-button {
+    width: 75px;
+    display: block;
+    margin: 0 auto;
+}
+
+.chat-entry {
+    display: flex;
+    position: relative;
+}

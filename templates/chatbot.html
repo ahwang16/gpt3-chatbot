@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<head>
+    <title>GPT-3 Chatbot</title>
+    <link rel="stylesheet" href="/static/main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Chatting with a GPT-3 Persona</h1>
+
+    <!-- Display the persona. -->
+    {% if persona_description %}
+    <div> {{ persona_description }} </div>
+    {% endif %}
+
+    <div class="chat-area">
+        <!-- The chat-area wraps the chat-window (where message bubbles show up
+             and the user-entry-area (where the user sends messages). -->
+        <div class="chat-window" id="chatbox">
+            <div class="bot">
+                <!-- divs in the bot class represent AI messages. -->
+                <!-- This is the first AI message. -->
+                <p>Hi I am a bot.</p>
+            </div>
+        </div>
+
+        <div class="user-entry-area">
+            <!-- The user-entry-area wraps two forms: one for sending messages
+                 and another for creating a new chatbot. -->
+            <form action="/chat" method="POST" id="userInput" class="chat-entry">
+                <!-- The inputs in the userInput form allow the user to POST
+                     text messages to the server, which will be given to the
+                     OpenAI API to generate the GPT-3 output. Notice the switch
+                     from kebab-case to camelCase: elements in kebab-case
+                     interact with HTML and CSS only while elements in camelCase
+                     interact with JavaScript, which does not support hyphens in
+                     variable names. -->
+                <label title="Text input for the user's message to the GPT-3 persona" id="textLabel">
+                    <input type="text" name="human_input" id="textInput" placeholder="Chat with GPT-3" required
+                        autocomplete="off" />
+                </label>
+                <label title="Send button">
+                    <input type="submit" value="Send" id="send" />
+                </label>
+            </form>
+
+            <form action="/" method="GET" class="chat-entry">
+                <!-- This form wraps a simple button to create a new chatbot. It
+                     needs a separate form because it interacts with a different
+                     endpoint. -->
+                <label title="New chatbot button">
+                    <input type="submit" value="New Chatbot" id="new-chatbot" />
+                </label>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        /* Since these functions are quite short and interact only with the
+           elements on this particular page, I have decided to put them in a
+           script on this HTML page instead of in a separate JavaScript file. */
+
+        /**
+         * Passes user input to display AI response in new message bubble.
+         * @function getResponse
+        */
+        function getResponse() {
+            // Get and display user input as a new message bubble.
+            let userText = $("#textInput").val();
+            let userHTML = '<div class="human"><p>' + userText + '</p></div>';
+
+            // Reset user input element.
+            $("#textInput").val("");
+
+            // Display the new human message in the chatbox.
+            $("#chatbox").append(userHTML);
+
+            // $.get() and done() are JQuery functions.
+            // $.get() sends a GET request to an endpoint (get_bot_response() in
+            // the Python file) with userText passed in as the input for the
+            // human_input parameter. When the function returns successfully,
+            // the done() function takes the botReply (GPT-3 generation), posts
+            // it as the new AI response, and scrolls the chatbox so the new
+            // messages are visible at the bottom.
+            $.get("/get", { human_input: userText }).done(function (botReplyJSON) {
+                var output = JSON.parse(botReplyJSON);
+                var botReply = output.response;
+
+                var botHTML = document.createElement("div")
+                botHTML.className = "bot";
+                var p = document.createElement("p");
+                p.innerHTML = botReply;
+                botHTML.append(p);
+
+                if (!output.success) {
+                    botHTML.style.backgroundColor = "yellow";
+                }
+
+                $("#chatbox").append(botHTML);
+                var chatbox = document.getElementById('chatbox');
+                chatbox.scrollTop = chatbox.scrollHeight;
+            })
+
+        }
+
+        // When the user hits the return key with a non-empty text input,
+        // run the getResponse() function.
+        $("#textInput").keypress(function (e) {
+            if (e.which == 13 && $("#textInput").val().length > 0) {
+                getResponse();
+            }
+        });
+
+        // When the user clicks the Send button with a non-empty text input,
+        // run the getResponse() function.
+        $("#send").click(function () {
+            if ($("#textInput").val().length > 0) {
+                getResponse();
+            }
+        });
+    </script>
+    </div>
+</body>

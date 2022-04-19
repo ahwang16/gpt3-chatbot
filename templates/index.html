@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+    <title>GPT-3 Chatbot</title>
+    <link rel="stylesheet" href="/static/main.css" />
+</head>
+
+<body>
+    <div class="intro">
+        <h1>Chatting with a GPT-3 Persona</h1>
+
+        <p>
+            Chat with GPT-3! Choose a persona to begin. Personas can be adjectives,
+            like happy or sad, or characters, like wizard or doctor. You can also
+            specify an OpenAI model and temperature or just use the defaults provided.
+        </p>
+
+        <form action="/" method="POST">
+            <!-- This form wraps the Personal, OpenAI Model, and Temperature
+                 inputs on the home page. Each input is wrapped with a label for
+                 to provide more information. The inputs are POSTed to the /
+                 endpoint, which represents the home page. The index()
+                 API function will handle these inputs as global variables.
+                 The form also wraps the Go! button, which just triggers the
+                 POST. -->
+            <label title="A persona for the GPT-3 Chatbot">
+                Persona
+                <input type="text" name="persona" placeholder="Give the chatbot a persona" required
+                    autocomplete="off" />
+            </label>
+            <label title="The OpenAI model to prompt with">
+                OpenAI Model
+                <input type="text" name="model" placeholder="OpenAI Model"
+                    value="davinci:ft-ccb-lab-members-2022-03-07-17-25-36" />
+            </label>
+            <label title="Amount of variability in GPT-3 outputs">
+                Temperature
+                <input type="text" name="temperature" placeholder="Temperature" value="0.9" />
+            </label>
+            <!-- One last input: a go button! -->
+            <label title="Submit button" class="go-button">
+                <input type="submit" value="Go!" class="go-button" />
+            </label>
+        </form>
+    </div>
+</body>
