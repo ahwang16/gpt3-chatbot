@@ -8,10 +8,10 @@ OpenAI [Quickstart Tutorial](https://github.com/openai/openai-quickstart-python)
 for Python.
 
 ## Tutorial
-[I](alyssahwang.com) worked on this project as part of my PhD candidacy exam
+[I](https://alyssahwang.com) worked on this project as part of my PhD candidacy exam
 (WPE-II for fellow Penn CIS people). Check out my report (TBA) "Designing and
-Implementing a Chatbot with GPT-3" to learn more about human-centered design,
-GPT-3 use cases, and implementation guidance for this chatbot.
+Implementing a Chatbot with GPT-3" for more information on human-centered
+design, GPT-3, and implementation.
 
 ## A Slight Bug...
 The chatbot supports querying any fine-tuned model that you have on your
