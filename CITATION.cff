@@ -1,0 +1,9 @@
+cff-version: 1.0.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Hwang"
+  given-names: "Alyssa"
+title: "GPT-3 Chatbot"
+version: 1.0.0
+date-released: 2022-04-19
+url: "https://github.com/ahwang16/gpt3-chatbot"
