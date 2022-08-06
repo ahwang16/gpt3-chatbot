@@ -140,10 +140,13 @@ def generate_prompt(human_input):
     global persona
     global prev_human
     global prev_bot
-    return """The following is a conversation with an AI persona. The AI is {}.
+
+    prompt = """This is a conversation between {persona} and human.
     
-    Human: {}
-    AI: {}
-    Human: {}
-    AI:""".format(persona, prev_human, prev_bot, human_input)
+    Human: {prev_human}
+    {persona}: {prev_bot}
+    Human: {human_input}
+    {persona}:""".format(persona=persona, prev_human=prev_human, prev_bot=prev_bot, human_input=human_input)
+
+    return prompt
 ################################################################################
