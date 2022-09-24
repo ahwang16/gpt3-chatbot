@@ -1,7 +1,6 @@
 # IMPORTS ######################################################################
 import json
 import os
-from urllib.error import HTTPError
 import openai
 from flask import Flask, redirect, render_template, request, url_for
 ################################################################################
@@ -13,8 +12,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")  # store API in .env file
 persona = ""  # Chatbot personality trait(s)
 model = ""  # Fine-tuned GPT-3 model to query
 temperature = None  # GPT-3 parameter set on chatbot home page
-prev_human = "Hello."  # Previous human utterance, starting with Hello.
-prev_bot = "Hi."  # Previous AI utterance, starting with Hi.
+prev_human = "Hello."  # Previous human message, starting with Hello.
+prev_bot = "Hi."  # Previous AI message, starting with Hi.
 ################################################################################
 
 # CHATBOT API ##################################################################
@@ -69,7 +68,7 @@ def chat():
                            persona_description=persona_description)
 
 
-@app.route("/get", methods=["GET"])
+@app.route("/gpt3", methods=["GET"])
 def get_bot_reply():
     """Queries GPT-3 API with human message and returns AI response.
 
@@ -89,6 +88,7 @@ def get_bot_reply():
     # Query OpenAI API for GPT-3 generation.
     global model
     global temperature
+    global persona
     try:
         if model == "text-davinci-002":
             response = openai.Completion.create(
@@ -96,7 +96,7 @@ def get_bot_reply():
                 prompt=prompt,
                 temperature=temperature,
                 max_tokens=150,
-                stop=["AI:", "Human:", "\n"],
+                stop=[f"{persona}:", "Human:", "\n"],
             ).choices[0].text
         else:
             response = openai.Completion.create(
@@ -104,11 +104,11 @@ def get_bot_reply():
                 prompt=prompt,
                 temperature=temperature,
                 max_tokens=150,
-                stop=["AI:", "Human:", "\n"],
+                stop=[f"{persona}:", "Human:", "\n"],
             ).choices[0].text
         is_successful = True
     except Exception as e:
-        response = "ERROR: " + str(e)
+        response = f"ERROR: {e}"
         is_successful = False
 
     # Update global variables

@@ -83,7 +83,7 @@
             // the done() function takes the botReply (GPT-3 generation), posts
             // it as the new AI response, and scrolls the chatbox so the new
             // messages are visible at the bottom.
-            $.get("/get", { human_input: userText }).done(function (botReplyJSON) {
+            $.get("/gpt3", { human_input: userText }).done(function (botReplyJSON) {
                 var output = JSON.parse(botReplyJSON);
                 var botReply = output.response;
 
