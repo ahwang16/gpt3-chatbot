@@ -1,5 +1,5 @@
 cff-version: 1.0.0
-type: "article"
+type: article
 message: "If you use my code, slides, or tutorial, please cite it as below."
 authors:
 - family-names: "Hwang"
