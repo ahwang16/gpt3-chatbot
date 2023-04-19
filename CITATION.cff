@@ -1,0 +1,12 @@
+cff-version: 1.0.0
+message: "If you use my code, slides, or tutorial, please cite it as below."
+authors:
+- family-names: "Hwang"
+  given-names: "Alyssa"
+  orcid: "https://orcid.org/0009-0006-4827-8505"
+title: "Build Your Own ChatGPT"
+version: 1.0.0
+date-released: 2023-04-18
+url: "https://github.com/ahwang16/gpt3-chatbot"
+preferred-citation:
+  type: article
