@@ -4,9 +4,17 @@ authors:
 - family-names: "Hwang"
   given-names: "Alyssa"
   orcid: "https://orcid.org/0009-0006-4827-8505"
-title: "Build Your Own ChatGPT"
+title: "GPT-3 Chatbot"
 version: 1.0.0
 date-released: 2023-04-18
 url: "https://github.com/ahwang16/gpt3-chatbot"
 preferred-citation:
   type: article
+  authors:
+  - family-names: "Hwang"
+    given-names: "Alyssa"
+    orcid: "https://orcid.org/0009-0006-4827-8505"
+  journal: "Alyssa Hwang"
+  month: 4
+  year: 2023
+  title: "Build Your Own ChatGPT"
