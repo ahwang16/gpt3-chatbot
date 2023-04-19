@@ -9,9 +9,8 @@ for Python.
 
 ## Tutorial
 [I](https://alyssahwang.com) worked on this project as part of my PhD candidacy exam
-(WPE-II for fellow Penn CIS people). Check out my report (TBA) "Designing and
-Implementing a Chatbot with GPT-3" for more information on human-centered
-design, GPT-3, and implementation.
+(WPE-II for fellow Penn CIS people). Check out my report (TBA) "Build Your Own ChatGPT" 
+for more a practical overview of GPT-3, design critique, and code walkthrough. 
 
 ## A Slight Bug...
 The chatbot supports querying any fine-tuned model that you have on your
