@@ -1,4 +1,5 @@
-# GPT-3 Chatbot
+![Build Your Own ChatGPT](gpt3_chatbot_github.png)
+
 Welcome to the GPT-3 Chatbot! This is a small web app that queries the OpenAI
 API to make a chatbot powered by GPT-3. The chatbot also has a persona, which
 can be chosen on the home page.
